@@ -1,0 +1,45 @@
+body{
+	background-image:url('../img/background.png');
+}
+
+a
+{
+	display: block;
+}
+
+#demarrer{
+	background-image:url('../img/button_start.png');
+	width:435px;
+	height:112px;
+}
+
+#option{
+	background-image:url('../img/button_options.png');
+	width:429px;
+	height:111px;
+	margin-top:5px;
+}
+
+#credits{
+	background-image:url('../img/button_credits.png');
+	width:429px;
+	height:111px;
+	margin-top:5px;
+}
+
+section{
+	width:435px;
+	height:344px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 30px;
+}
+
+#title{
+	background-image: url('../img/title.png');
+	width:478px;
+	height:151px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 230px;
+}
