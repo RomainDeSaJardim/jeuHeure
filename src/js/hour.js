@@ -2,18 +2,12 @@
 
 var hourApp = angular.module('hourApp', [
     'ngRoute',
-    'ngAnimate',
-    'hourGame'
+    'ngAnimate'
 ]);
 
-hourApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+hourApp.config(['$routeProvider', function ($routeProvider) {
 	
 	$routeProvider
-	.when('/',
-	{
-		templateUrl: 'partials/home.html',
-		controller: 'homeController'
-	})
 	.when('/home', 
 	{
 		templateUrl: 'partials/home.html',
@@ -33,29 +27,34 @@ hourApp.config(['$routeProvider', '$locationProvider', function ($routeProvider,
 	{
 		templateUrl: 'partials/credits.html'
 	})
+	.when('/',
+	{
+		templateUrl: 'partials/home.html',
+		controller: 'homeController'
+	})
 	.otherwise(
 	{
 		redirect: '/home'
 	});
-
 }]);
 
-var hourGame = angular.module('hourGame',[]);
-
-hourGame.controller('gameController', ['$scope', '$rootScope',
+hourApp.controller('gameController', ['$scope', '$rootScope',
     function ($scope, $rootScope) {
-
+    	$rootScope.clock.init();
     }
 ]);
 
-hourGame.controller('optionsController', ['$scope', '$rootScope',
+hourApp.controller('optionsController', ['$scope', '$rootScope',
 	function ($scope, $rootScope){
 		
 	}
 ]);
 
-hourGame.controller('homeController', ['$scope', '$rootScope',
-	function ($scope, $rootScope){
-		
-	}
+hourApp.controller('homeController', ['$scope', '$rootScope',
+    function ($scope, $rootScope) {
+    	$rootScope.clock={};
+    	$rootScope.clock = new Clock();
+    	console.log($rootScope.clock);
+    }
 ]);
+

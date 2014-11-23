@@ -8,8 +8,9 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'src/js/hour.js',
-        dest: 'build/js/hour.min.js'
+        files: {
+            'build/js/app.js': ['src/js/*.js']
+        }
       }
     },
     copy: {
