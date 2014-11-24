@@ -1,74 +1,72 @@
-var Clock = function() 
-{
-	this.stage;
-	this.layer = new Kinetic.Layer();
-	this.hour = 0;
-	this.min = 0;
-	this.srcClock = "img/clock1.png";
-	this.clockImage = new Image();
-	this.hourImage = new Image();
-	this.minImage = new Image();
+var Clock = function(){
+  var stage;
+  var layerClock;
+  var adresse='';
+  var heures;
+  var minutes;
+  var imageClock = new Image();
+  var imageHour = new Image();
+  var imageMinute = new Image();
 
-	this.init = function() 
-	{
-		this.stage = new Kinetic.Stage({
-      		container: 'game',
-     		 width: 400,
-      		height: 400,
-      	});
-		
-      	this.layer = new Kinetic.Layer();
 
-      	console.log(this.layer);
-		this.hour = Math.round(Math.random() * 24);
-		this.min = Math.round(Math.random() * 60);
+  this.init = function () {
+    //init stage
+    stage = new Kinetic.Stage({
+      container: 'game',
+      width: 400,
+      height: 400,
+    });
+    //init layers
+    layerClock = new Kinetic.Layer();
+    
+    imageClock.onload = function () {
+        var imgclock = new Kinetic.Image({
+          width: 220,
+          height: 228,
+          image: imageClock,
+          draggable: false
+        });
+     // add the shape to the layer
+      layerClock.add(imgclock);
+      layerClock.draw();
+    };
+    //Init Minutes
+    imageMinute.src = 'img/firstHand.png';
+    imageMinute.onload = function () {
+      minutes = 30;
+      var angle = minutes * 360 / 60;
+      var firstHandclock = new Kinetic.Image({
+          x: 109,
+          y: 114,
+          width: 3,
+          height: 80,
+          image: imageMinute
+        });
+      //Flip l'aiguille pour la mettre au bon endroit
+      firstHandclock.setScale({y:-1});
+      firstHandclock.rotate(angle%360);
+      // add the shape to the layer
+      layerClock.add(firstHandclock);
+      layerClock.draw();
+    };
+      imageHour.src = 'img/secondHand.png';
+      imageHour.onload = function () {
+      heures = 20;
+      var secondHandclock = new Kinetic.Image({
+          x: 109,
+          y: 114,
+          width: 3,
+          height: 40,
+          image: imageHour
+        });
+      secondHandclock.setScale({y:-1});
+      secondHandclock.rotate((heures%12)* 360 / 12);
+      // add the shape to the layer
+      layerClock.add(secondHandclock);
+      layerClock.draw();
+    };
+    stage.add(layerClock);
+    layerClock.draw();
+  };
 
-		this.clockImage.src = this.srcClock;
-
-		this.clockImage.onload = function() 
-		{
-			var image = new Kinetic.Image({
-				image: this.clockImage,
-				width: 220,
-         		height: 228,
-			});
-			console.log(Clock);
-		};
-
-		this.layer.add(this);
-		this.layer.draw();
-
-		this.hourImage.src = "img/secondHand.png";
-
-		this.hourImage.onload = function() 
-		{
-			var image = new Kinetic.Image({
-				image: this.hourImage,
-				x: 110,
-          		y: 114,
-				rotation: this.hour /24 * 360,
-			});
-		};
-
-		this.layer.add(this);
-		this.layer.draw();
-
-		this.hourImage.src = "img/firstHand.png";
-
-		this.minImage.onload = function() 
-		{
-			var image = new Kinetic.Image({
-				image: this.minImage,
-				x: 110,
-          		y: 114,
-				rotation: this.min /60 * 360,
-			});
-		};
-
-		this.layer.add(this);
-		this.layer.draw();
-
-		this.stage.add(this.layer);
-		this.layer.draw();
-	};
-};
+ };
