@@ -40,21 +40,22 @@ hourApp.config(['$routeProvider', function ($routeProvider) {
 
 hourApp.controller('gameController', ['$scope', '$rootScope',
     function ($scope, $rootScope) {
-    	$rootScope.clock.init();
+    	$scope.clock = new Clock();
+    	$scope.clock.changeClock($rootScope.pathImg);
+    	$scope.timeDay = $scope.clock.getTimeDay();
     }
 ]);
 
 hourApp.controller('optionsController', ['$scope', '$rootScope',
 	function ($scope, $rootScope){
-		
+		$scope.changeColorClock = function (pathImg) {
+			$rootScope.pathImg = pathImg;
+		};
 	}
 ]);
 
 hourApp.controller('homeController', ['$scope', '$rootScope',
     function ($scope, $rootScope) {
-    	$rootScope.clock={};
-    	$rootScope.clock = new Clock();
-    	console.log($rootScope.clock);
     }
 ]);
 
