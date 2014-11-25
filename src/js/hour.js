@@ -8,11 +8,6 @@ var hourApp = angular.module('hourApp', [
 hourApp.config(['$routeProvider', function ($routeProvider) {
 	
 	$routeProvider
-	.when('/home', 
-	{
-		templateUrl: 'partials/home.html',
-		controller: 'homeController'
-	})
 	.when('/game', 
 	{
 		templateUrl: 'partials/game.html',
@@ -40,9 +35,12 @@ hourApp.config(['$routeProvider', function ($routeProvider) {
 
 hourApp.controller('gameController', ['$scope', '$rootScope',
     function ($scope, $rootScope) {
+    	console.log($scope.clock);
+    	$scope.clock = {};
     	$scope.clock = new Clock();
     	$scope.clock.changeClock($rootScope.pathImg);
     	$scope.timeDay = $scope.clock.getTimeDay();
+    	console.log($scope.clock);
     }
 ]);
 

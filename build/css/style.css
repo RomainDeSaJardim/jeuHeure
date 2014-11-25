@@ -27,7 +27,7 @@ a
 	margin-top:5px;
 }
 
-section{
+#clock{
 	width:435px;
 	height:344px;
 	margin-left:auto;
@@ -42,4 +42,20 @@ section{
 	margin-left:auto;
 	margin-right:auto;
 	margin-top: 230px;
+}
+
+.span{
+	background: no-repeat, url('../img/span.png');
+	width: 65px;
+	height: 60px;
+	border: none;
+	background-size: cover;
+}
+
+#menu{
+	width:435px;
+	height:344px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 30px;
 }

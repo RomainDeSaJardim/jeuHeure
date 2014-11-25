@@ -95,6 +95,11 @@ var Clock = function(){
 	_self.setHeureMinute = function () {
 		_self.heures = Math.round(Math.random() * 24);
 		_self.minutes = 5 * Math.round(Math.random()/5 * 60);
+		if(_self.minutes == 60)
+		{
+			_self.heures += 1;
+			_self.minutes = 0;
+		}
 	};
 
 	_self.construct();
