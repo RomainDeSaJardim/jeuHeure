@@ -1,12 +1,21 @@
-<div >
-	<section id="clock">
-	</section>
-	<section id="hour">
-		<h3>{{timeDay}}</h3>
-		<div>
-			<input type="text" class="span"/>
-			<div class="arrowUp"></div>
-			<div class="arrowDown"></div>
+<a href="#/" id="arrow" ></a>
+<section id="clock">
+</section>
+<section id="hour">
+	<h3 class="lobster">{{timeDay}}</h3>
+	<div class="left">
+		<span class="span">{{clientHeures}}</span>
+		<div class="left">
+			<div class="arrowUp" ng-click="hourUp()"></div>
+			<div class="arrowDown" ng-click="hourDown()"></div>
 		</div>
-	</section>
-</div>
+	</div>
+	<div class="right">
+		<span class="span">{{clientMinutes}}</span>
+		<div class="right">
+			<div class="arrowUp" ng-click="minuteUp()"></div>
+			<div class="arrowDown" ng-click="minuteDown()"></div>
+		</div>
+	</div>
+	<input type="button" class="verify" ng-click="verify()"/>
+</section>

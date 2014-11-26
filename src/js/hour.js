@@ -2,7 +2,8 @@
 
 var hourApp = angular.module('hourApp', [
     'ngRoute',
-    'ngAnimate'
+    'ngAnimate',
+    'ngDialog'
 ]);
 
 hourApp.config(['$routeProvider', function ($routeProvider) {
@@ -33,20 +34,97 @@ hourApp.config(['$routeProvider', function ($routeProvider) {
 	});
 }]);
 
-hourApp.controller('gameController', ['$scope', '$rootScope',
-    function ($scope, $rootScope) {
-    	console.log($scope.clock);
+hourApp.controller('gameController', ['$scope', '$rootScope', 'ngDialog',
+    function ($scope, $rootScope, ngDialog) {
     	$scope.clock = {};
-    	$scope.clock = new Clock();
-    	$scope.clock.changeClock($rootScope.pathImg);
+    	$scope.clock = new Clock($rootScope.pathImg);
     	$scope.timeDay = $scope.clock.getTimeDay();
-    	console.log($scope.clock);
+    	$scope.heures = $scope.clock.getHeures();
+    	$scope.minutes = $scope.clock.getMinutes();
+    	$scope.clientHeures = 0;
+    	$scope.clientMinutes = 0;
+
+    	$scope.hourUp = function(){
+    		if($scope.clientHeures == 23)
+    		{
+    			$scope.clientHeures = 0;
+    		}
+    		else
+    		{
+    			$scope.clientHeures += 1;
+    		}
+    	};
+
+    	$scope.hourDown = function(){
+
+    		if($scope.clientHeures == 0)
+    		{
+    			$scope.clientHeures = 23;
+    		}
+    		else
+    		{
+    			$scope.clientHeures -= 1;
+    		}
+
+    	};
+
+    	$scope.minuteUp = function(){
+
+    		if($scope.clientMinutes == 55)
+    		{
+    			$scope.clientMinutes = 0;
+    		}
+    		else
+    		{
+    			$scope.clientMinutes += 5;
+    		}
+
+    	};
+
+    	$scope.minuteDown = function(){
+
+    		if($scope.clientMinutes == 0)
+    		{
+    			$scope.clientMinutes = 55;
+    		}
+    		else
+    		{
+    			$scope.clientMinutes -= 5;
+    		}
+
+    	};
+
+    	$scope.verify = function() {
+    		console.log($scope.clock.checkTime($scope.clientHeures, $scope.clientMinutes));
+    		if($scope.clock.checkTime($scope.clientHeures, $scope.clientMinutes))
+    		{
+    			ngDialog.open({
+    				template: 'partials/win.html',
+    				scope: $scope
+    			});
+    		}
+    		else
+    		{
+    			ngDialog.open({
+    				template: 'partials/loose.html',
+    				scope: $scope,
+    			});
+    		}
+    	};
+
+    	$scope.playAgain = function(){
+    		$scope.clock = {};
+    		$scope.clock = new Clock();
+    		$scope.timeDay = $scope.clock.getTimeDay();
+    		$scope.clientMinutes = 0;
+    		$scope.clientHeures = 0;
+    	};
     }
 ]);
 
 hourApp.controller('optionsController', ['$scope', '$rootScope',
 	function ($scope, $rootScope){
-		$scope.changeColorClock = function (pathImg) {
+		$scope.changeClock = function (pathImg) {
 			$rootScope.pathImg = pathImg;
 		};
 	}

@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-            'build/js/app.js': ['src/js/*.js']
+          'build/js/app.js': ['src/js/*.js']
         }
       }
     },
@@ -23,6 +23,15 @@ module.exports = function(grunt) {
           {expand: true, cwd:'src/partials/', src: ['**'], dest: 'build/partials'}
         ],
       },
+    },
+    cssmin: {
+      minify: {
+        expand: true,
+        cwd: 'src/css/',
+        src: ["*.css"],
+        dest: 'build/css/',
+        ext: '.css'
+      }
     }
   });
 
@@ -30,7 +39,9 @@ module.exports = function(grunt) {
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+
   // Default task(s).
-  grunt.registerTask('default', ['uglify','copy']);
+  grunt.registerTask('default', ['uglify','copy','cssmin']);
 
 };

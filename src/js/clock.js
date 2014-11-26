@@ -1,4 +1,6 @@
-var Clock = function(){
+'use strict';
+
+var Clock = function(src){
 	var _self = this;
   	var stage;
   	var layerClock;
@@ -9,11 +11,16 @@ var Clock = function(){
   	var imageHour = new Image();
   	var imageMinute = new Image();
 
-  	_self.construct =  function () {
-  		_self.init();
+  	_self.construct =  function (src) {
+  		_self.init(src);
   	};
 
-  	_self.init = function () {
+  	_self.init = function (src) {
+  		console.log(src);
+  		if(typeof(src) == 'undefined' || src == null || src == '')
+  		{
+  			src = 'img/clock1.png'
+  		}
     //init stage
     	stage = new Kinetic.Stage({
      		container: 'clock',
@@ -25,7 +32,7 @@ var Clock = function(){
 	    //init layers
 	    layerClock = new Kinetic.Layer();
 
-	    imageClock.src = 'img/clock1.png';
+	    imageClock.src = src;
 	    
 	    imageClock.onload = function () {
 	        var imgclock = new Kinetic.Image({
@@ -43,8 +50,10 @@ var Clock = function(){
 	    imageMinute.onload = function () {
 	      	console.log(_self.minutes);
 	      	var firstHandclock = new Kinetic.Image({
-	         	x: 201,
-	         	y: 197,
+	         	x: 198,
+	         	y: 192,
+	         	offsetX: 3,
+	         	offsetY: 3,
 	          	width: 6,
 	          	height: 120,
 	          	rotation: 180 + _self.minutes * 6, // *6 car un tour d'horloge = 360° donc pour 1 minute on a 360/60 = 6°
@@ -62,6 +71,8 @@ var Clock = function(){
 	          	y: 192,
 	          	width: 6,
 	          	height: 80,
+	          	offsetX: 3,
+	         	offsetY: 3,
 	          	rotation: 180 + _self.heures * 30 + _self.minutes * 0.5,
 	          	image: imageHour
 	        });
@@ -71,13 +82,6 @@ var Clock = function(){
 	    };
 	    stage.add(layerClock);
 	    layerClock.draw();
-	};
-
-	_self.changeClock = function (clockPath) {
-		if(clockPath != "" && clockPath != null)
-		{
-			_self.imageClock.src = clockPath;
-		}
 	};
 
 	_self.getTimeDay = function () {
@@ -92,6 +96,14 @@ var Clock = function(){
 		}
 	};
 
+	_self.getHeures = function () {
+		return _self.heures;
+	};
+
+	_self.getMinutes = function () {
+		return _self.minutes;
+	};
+
 	_self.setHeureMinute = function () {
 		_self.heures = Math.round(Math.random() * 24);
 		_self.minutes = 5 * Math.round(Math.random()/5 * 60);
@@ -100,8 +112,19 @@ var Clock = function(){
 			_self.heures += 1;
 			_self.minutes = 0;
 		}
+		if(_self.heures == 24)
+		{
+			_self.heures = 0;
+		}
 	};
 
-	_self.construct();
+	_self.checkTime = function(heures, minutes){
+		if(heures == _self.heures && minutes == _self.minutes){
+			return true;
+		}
+		return false;
+	}
+
+	_self.construct(src);
 
  };

@@ -1,55 +1,84 @@
-body{
-	background-image:url('../img/background.png');
+@font-face {
+    font-family: 'Lobster';
+    src: url('fonts/Lobster 1.4.otf');
+    font-weight: normal;
+    font-style: normal;
 }
 
-a
-{
+body{
+	background-image:url('../img/background.png');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+a{
 	display: block;
 }
 
 #demarrer{
 	background-image:url('../img/button_start.png');
-	width:435px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width:438px;
 	height:112px;
 }
 
 #option{
 	background-image:url('../img/button_options.png');
-	width:429px;
-	height:111px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width:438px;
+	height:112px;
 	margin-top:5px;
 }
 
 #credits{
 	background-image:url('../img/button_credits.png');
-	width:429px;
-	height:111px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width:438px;
+	height:112px;
 	margin-top:5px;
 }
 
 #clock{
-	width:435px;
+	width:400px;
 	height:344px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top: 30px;
+	margin-top: 100px;
 }
 
 #title{
 	background-image: url('../img/title.png');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 	width:478px;
 	height:151px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top: 230px;
+	margin-top: 280px;
 }
 
 .span{
-	background: no-repeat, url('../img/span.png');
-	width: 65px;
-	height: 60px;
-	border: none;
-	background-size: cover;
+	background-image: url('../img/span.png');
+	width: 173px;
+	height: 159px;
+	line-height: 159px;
+	text-align: center;
+	font-size: 40px;
+	font-family: 'Lobster';
+	display: inline-block;
 }
 
 #menu{
@@ -58,4 +87,169 @@ a
 	margin-left:auto;
 	margin-right:auto;
 	margin-top: 30px;
+}
+
+.arrowUp{
+	background-image: url('../img/button_up.png');
+	width: 51px;
+	height: 77px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+.arrowDown{
+	background-image: url('../img/button_down.png');
+	width: 51px;
+	height: 76px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+#hour{
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 530px;
+}
+
+.left{
+	float: left;
+	margin-right: 10px;
+}
+
+.right{
+	float: right;
+	margin-left: 10px;
+}
+
+.lobster{
+	font-family: 'Lobster';
+	font-size: 50px;
+	font-weight: bold;
+	color: white;
+}
+
+.verify{
+	margin-top: 20px;
+	background: no-repeat, url('../img/verify.png');
+	width: 463px;
+	height: 112px;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
+#win{
+	width: 565px;
+	height: 140px;
+	background-image: url('../img/success.png');
+}
+
+#menuReturn{
+	background-image: url('../img/button_menu.png');
+	width: 335px;
+	height: 112px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+#playAgain{
+	background-image: url('../img/button_replay.png');
+	width: 328px;
+	height: 122px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+#close{
+	background-image: url('../img/cross.png');
+	width: 92px;
+	height: 92px;
+	position: absolute;
+	top: -46px;
+	right: -46px;
+	cursor: pointer;
+}
+
+#pendule1{
+	background-image: url('../img/clock1.png');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 220px;
+	height: 228px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+#pendule2{
+	background-image: url('../img/clock2.png');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 220px;
+	height: 228px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+#pendule3{
+	background-image: url('../img/clock3.png');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 220px;
+	height: 228px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+#choixPendule{
+	width: 720px;
+	height: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+}
+
+#titlePendule{
+	text-align: center;
+	font-family: 'Lobster';
+	font-size: 50px;
+	color: white;
+	margin-top: 0px;
+}
+
+#arrow{
+	background-image: url('../img/retour.png');
+	width: 117px;
+	height: 117px;
+}
+
+.credits{
+	text-align: center;
+	font-family: 'Lobster';
+	font-size: 40px;
+	color: white;
+	margin-top: 0px;
+}
+
+#loose{
+	width: 530px;
+	height: 140px;
+	background-image: url('../img/fail.png');
+}
+
+#pLoose{
+	font-family: 'Lobster';
+	text-align: center;
 }
